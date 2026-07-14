@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Hls from "hls.js";
 
-const STREAM_URL = "https://tv.fazenda.rodeo/hls/live.m3u8";
+const STREAM_URL = "/api/public/hls/live.m3u8";
 
 export function LivePlayer() {
   const videoRef = useRef<HTMLVideoElement>(null);

@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicRadioSplatRouteImport } from './routes/api/public/radio.$'
 import { Route as ApiPublicHlsSplatRouteImport } from './routes/api/public/hls.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicRadioSplatRoute = ApiPublicRadioSplatRouteImport.update({
+  id: '/api/public/radio/$',
+  path: '/api/public/radio/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicHlsSplatRoute = ApiPublicHlsSplatRouteImport.update({
@@ -26,27 +32,31 @@ const ApiPublicHlsSplatRoute = ApiPublicHlsSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/public/hls/$': typeof ApiPublicHlsSplatRoute
+  '/api/public/radio/$': typeof ApiPublicRadioSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/public/hls/$': typeof ApiPublicHlsSplatRoute
+  '/api/public/radio/$': typeof ApiPublicRadioSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/public/hls/$': typeof ApiPublicHlsSplatRoute
+  '/api/public/radio/$': typeof ApiPublicRadioSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/hls/$'
+  fullPaths: '/' | '/api/public/hls/$' | '/api/public/radio/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/hls/$'
-  id: '__root__' | '/' | '/api/public/hls/$'
+  to: '/' | '/api/public/hls/$' | '/api/public/radio/$'
+  id: '__root__' | '/' | '/api/public/hls/$' | '/api/public/radio/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiPublicHlsSplatRoute: typeof ApiPublicHlsSplatRoute
+  ApiPublicRadioSplatRoute: typeof ApiPublicRadioSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/radio/$': {
+      id: '/api/public/radio/$'
+      path: '/api/public/radio/$'
+      fullPath: '/api/public/radio/$'
+      preLoaderRoute: typeof ApiPublicRadioSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/hls/$': {
@@ -71,17 +88,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiPublicHlsSplatRoute: ApiPublicHlsSplatRoute,
+  ApiPublicRadioSplatRoute: ApiPublicRadioSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

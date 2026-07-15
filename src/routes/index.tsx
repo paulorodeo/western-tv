@@ -233,13 +233,26 @@ function Home() {
 
           <div className="mt-12 hairline" />
 
-          <div className="mt-8 flex flex-col items-center justify-between gap-4 text-[10px] tracking-[0.28em] uppercase text-muted-foreground md:flex-row">
+          <div className="mt-8 flex flex-col items-center justify-between gap-6 text-[10px] tracking-[0.28em] uppercase text-muted-foreground md:flex-row">
             <p>© {new Date().getFullYear()} Fazenda Rodeo · Todos os direitos reservados</p>
-            <div className="flex items-center gap-6">
-              <a href="#" aria-label="Instagram" className="hover:text-gold">Instagram</a>
-              <a href="#" aria-label="YouTube" className="hover:text-gold">YouTube</a>
-              <a href="#" aria-label="Spotify" className="hover:text-gold">Spotify</a>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <a href="https://www.instagram.com/rodeocountrymedia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-gold">Instagram</a>
+              <a href="https://www.youtube.com/@fazendarodeo" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-gold">YouTube</a>
+              <a href="https://www.facebook.com/paulorodeoagro" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-gold">Facebook</a>
+              <a href="https://wa.me/5511988559044" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-gold">WhatsApp</a>
             </div>
+          </div>
+
+          <div className="mt-10 flex flex-col items-center gap-3">
+            <a
+              href="https://paulo.rodeo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 text-[10px] tracking-[0.32em] uppercase text-muted-foreground/70 transition-colors hover:text-gold"
+            >
+              <span>Powered by</span>
+              <img src={poweredLogo.url} alt="Paulo Rodeo" className="h-6 w-auto opacity-70 transition-opacity group-hover:opacity-100" />
+            </a>
           </div>
         </div>
       </footer>

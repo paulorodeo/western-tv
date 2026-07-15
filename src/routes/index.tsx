@@ -257,6 +257,7 @@ function Home() {
           </div>
         </div>
       </footer>
+      <RadioPlayer />
     </div>
   );
 }

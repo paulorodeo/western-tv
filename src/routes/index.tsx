@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LivePlayer } from "@/components/LivePlayer";
+import { RadioPlayer } from "@/components/RadioPlayer";
 import heroImg from "@/assets/hero-cowboy.jpg";
 import ecoPortal from "@/assets/eco-portal.jpg";
 import ecoRadio from "@/assets/eco-radio.jpg";
@@ -256,6 +257,7 @@ function Home() {
           </div>
         </div>
       </footer>
+      <RadioPlayer />
     </div>
   );
 }

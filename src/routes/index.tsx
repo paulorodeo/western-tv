@@ -45,6 +45,7 @@ function Home() {
             <a href="#ao-vivo" className="transition-colors hover:text-gold">Ao vivo</a>
             <a href="#historia" className="transition-colors hover:text-gold">História</a>
             <a href="#ecossistema" className="transition-colors hover:text-gold">Ecossistema</a>
+            <a href="https://paulo.fazenda.rodeo" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-gold">Universo</a>
           </nav>
           <a
             href="#ao-vivo"

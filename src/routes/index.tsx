@@ -4,6 +4,7 @@ import heroImg from "@/assets/hero-cowboy.jpg";
 import ecoPortal from "@/assets/eco-portal.jpg";
 import ecoRadio from "@/assets/eco-radio.jpg";
 import ecoTv from "@/assets/eco-tv.jpg";
+import poweredLogo from "@/assets/powered-pr.webp.asset.json";
 
 const LOGO = "https://agronejo.fazenda.rodeo/wp-content/uploads/2025/01/New-Logo-Fazenda-Rodeo-180-x-56-px1.png";
 

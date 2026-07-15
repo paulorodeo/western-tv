@@ -4,6 +4,7 @@ import heroImg from "@/assets/hero-cowboy.jpg";
 import ecoPortal from "@/assets/eco-portal.jpg";
 import ecoRadio from "@/assets/eco-radio.jpg";
 import ecoTv from "@/assets/eco-tv.jpg";
+import poweredLogo from "@/assets/powered-pr.webp.asset.json";
 
 const LOGO = "https://agronejo.fazenda.rodeo/wp-content/uploads/2025/01/New-Logo-Fazenda-Rodeo-180-x-56-px1.png";
 
@@ -44,6 +45,7 @@ function Home() {
             <a href="#ao-vivo" className="transition-colors hover:text-gold">Ao vivo</a>
             <a href="#historia" className="transition-colors hover:text-gold">História</a>
             <a href="#ecossistema" className="transition-colors hover:text-gold">Ecossistema</a>
+            <a href="https://paulo.fazenda.rodeo" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-gold">Universo</a>
           </nav>
           <a
             href="#ao-vivo"
@@ -89,7 +91,9 @@ function Home() {
                 Assistir ao vivo
               </a>
               <a
-                href="#historia"
+                href="https://fazenda.rodeo"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[11px] tracking-[0.32em] uppercase text-foreground/70 transition-colors hover:text-gold"
               >
                 Conheça a marca →
@@ -229,13 +233,26 @@ function Home() {
 
           <div className="mt-12 hairline" />
 
-          <div className="mt-8 flex flex-col items-center justify-between gap-4 text-[10px] tracking-[0.28em] uppercase text-muted-foreground md:flex-row">
+          <div className="mt-8 flex flex-col items-center justify-between gap-6 text-[10px] tracking-[0.28em] uppercase text-muted-foreground md:flex-row">
             <p>© {new Date().getFullYear()} Fazenda Rodeo · Todos os direitos reservados</p>
-            <div className="flex items-center gap-6">
-              <a href="#" aria-label="Instagram" className="hover:text-gold">Instagram</a>
-              <a href="#" aria-label="YouTube" className="hover:text-gold">YouTube</a>
-              <a href="#" aria-label="Spotify" className="hover:text-gold">Spotify</a>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <a href="https://www.instagram.com/rodeocountrymedia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-gold">Instagram</a>
+              <a href="https://www.youtube.com/@fazendarodeo" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-gold">YouTube</a>
+              <a href="https://www.facebook.com/paulorodeoagro" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-gold">Facebook</a>
+              <a href="https://wa.me/5511988559044" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-gold">WhatsApp</a>
             </div>
+          </div>
+
+          <div className="mt-10 flex flex-col items-center gap-3">
+            <a
+              href="https://paulo.rodeo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 text-[10px] tracking-[0.32em] uppercase text-muted-foreground/70 transition-colors hover:text-gold"
+            >
+              <span>Powered by</span>
+              <img src={poweredLogo.url} alt="Paulo Rodeo" className="h-6 w-auto opacity-70 transition-opacity group-hover:opacity-100" />
+            </a>
           </div>
         </div>
       </footer>

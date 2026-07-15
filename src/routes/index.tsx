@@ -91,7 +91,9 @@ function Home() {
                 Assistir ao vivo
               </a>
               <a
-                href="#historia"
+                href="https://fazenda.rodeo"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[11px] tracking-[0.32em] uppercase text-foreground/70 transition-colors hover:text-gold"
               >
                 Conheça a marca →

@@ -48,7 +48,7 @@
 - **Dev replicando em outro projeto** → `PLAYER_MIGRATION_GUIDE.md` → `TV_PLAYER.md` → `API_REFERENCE.md`
 - **Auditor de segurança/performance** → `SECURITY.md` → `PERFORMANCE.md` → `adr/`
 - **Arquiteto propondo mudança** → `REFERENCE_ARCHITECTURE.md` → template de divergência → novo ADR
-- **QA** → `TEST_PLAN.md` → `QUALITY_CRITERIA.md`
+- **QA** → `TEST_PLAN.md` → `COMPATIBILITY_MATRIX.md` → `QUALITY_CRITERIA.md`
 
 ---
 

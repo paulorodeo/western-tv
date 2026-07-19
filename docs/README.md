@@ -11,7 +11,7 @@
 ### Referência arquitetural
 | Documento | Propósito |
 |---|---|
-| [`PLAYER_REFERENCE_ARCHITECTURE.md`](./PLAYER_REFERENCE_ARCHITECTURE.md) | **Baseline oficial.** Rubrica de comparação e template de divergência. |
+| [`REFERENCE_ARCHITECTURE.md`](./REFERENCE_ARCHITECTURE.md) | **Baseline oficial.** Rubrica de comparação e template de divergência. |
 | [`PLATFORM_ARCHITECTURE.md`](./PLATFORM_ARCHITECTURE.md) | Diagrama global da plataforma (Browser → Media Engine → Proxy → Origin). |
 | [`PLAYER_ARCHITECTURE.md`](./PLAYER_ARCHITECTURE.md) | Componentes, hooks, server routes, fluxos, ciclo de vida. |
 | [`MEDIA_ENGINE.md`](./MEDIA_ENGINE.md) | Especificação dos módulos do núcleo de mídia compartilhado. |
@@ -31,6 +31,7 @@
 | [`SECURITY.md`](./SECURITY.md) | CORS, CSP, HTTPS, SSRF, rate limit, DRM (futuro). |
 | [`TEST_PLAN.md`](./TEST_PLAN.md) | Matriz de testes: navegadores × SO × dispositivos × features. |
 | [`QUALITY_CRITERIA.md`](./QUALITY_CRITERIA.md) | Requisitos mínimos para novos players. |
+| [`COMPATIBILITY_MATRIX.md`](./COMPATIBILITY_MATRIX.md) | Matriz de compatibilidade navegadores × features + estratégia de progressive enhancement. |
 
 ### Planejamento
 | Documento | Propósito |
@@ -46,8 +47,8 @@
 - **Dev iniciando no projeto** → `TV_PLAYER.md` → `PLAYER_ARCHITECTURE.md` → `API_REFERENCE.md`
 - **Dev replicando em outro projeto** → `PLAYER_MIGRATION_GUIDE.md` → `TV_PLAYER.md` → `API_REFERENCE.md`
 - **Auditor de segurança/performance** → `SECURITY.md` → `PERFORMANCE.md` → `adr/`
-- **Arquiteto propondo mudança** → `PLAYER_REFERENCE_ARCHITECTURE.md` → template de divergência → novo ADR
-- **QA** → `TEST_PLAN.md` → `QUALITY_CRITERIA.md`
+- **Arquiteto propondo mudança** → `REFERENCE_ARCHITECTURE.md` → template de divergência → novo ADR
+- **QA** → `TEST_PLAN.md` → `COMPATIBILITY_MATRIX.md` → `QUALITY_CRITERIA.md`
 
 ---
 

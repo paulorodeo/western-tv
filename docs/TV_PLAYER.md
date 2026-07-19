@@ -1,7 +1,7 @@
 # TV Player — Documentação Técnica & Engenharia Reversa
 
 > Documento canônico da implementação atual do **TV Player** da Fazenda Rodeo.
-> Complementa: [`PLAYER_ARCHITECTURE.md`](./PLAYER_ARCHITECTURE.md), [`API_REFERENCE.md`](./API_REFERENCE.md), [`PLAYER_REFERENCE_ARCHITECTURE.md`](./PLAYER_REFERENCE_ARCHITECTURE.md).
+> Complementa: [`PLAYER_ARCHITECTURE.md`](./PLAYER_ARCHITECTURE.md), [`API_REFERENCE.md`](./API_REFERENCE.md), [`REFERENCE_ARCHITECTURE.md`](./REFERENCE_ARCHITECTURE.md).
 
 ---
 

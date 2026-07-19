@@ -31,6 +31,7 @@
 | [`SECURITY.md`](./SECURITY.md) | CORS, CSP, HTTPS, SSRF, rate limit, DRM (futuro). |
 | [`TEST_PLAN.md`](./TEST_PLAN.md) | Matriz de testes: navegadores × SO × dispositivos × features. |
 | [`QUALITY_CRITERIA.md`](./QUALITY_CRITERIA.md) | Requisitos mínimos para novos players. |
+| [`COMPATIBILITY_MATRIX.md`](./COMPATIBILITY_MATRIX.md) | Matriz de compatibilidade navegadores × features + estratégia de progressive enhancement. |
 
 ### Planejamento
 | Documento | Propósito |

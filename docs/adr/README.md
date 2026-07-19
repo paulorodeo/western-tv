@@ -57,4 +57,4 @@ Formato: [MADR](https://adr.github.io/madr/) simplificado.
 - **Um ADR por decisão.** Nunca mesclar.
 - **Imutáveis após Accepted.** Mudanças criam um novo ADR que "supersedes" o anterior.
 - **Curtos.** Se passar de 1 página, algo está errado.
-- **Todo player novo que divergir do baseline exige ADR.** Ver [`../PLAYER_REFERENCE_ARCHITECTURE.md`](../PLAYER_REFERENCE_ARCHITECTURE.md).
+- **Todo player novo que divergir do baseline exige ADR.** Ver [`../REFERENCE_ARCHITECTURE.md`](../REFERENCE_ARCHITECTURE.md).

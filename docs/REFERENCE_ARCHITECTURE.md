@@ -66,7 +66,7 @@ Sempre que um novo player divergir do baseline, preencher:
 
 **Data:** YYYY-MM-DD
 **Autor:** <nome>
-**Referência:** PLAYER_REFERENCE_ARCHITECTURE.md v1.0
+**Referência:** REFERENCE_ARCHITECTURE.md v1.0
 
 ## 1. Diferenças
 | Aspecto | Baseline | Este player | Motivo |

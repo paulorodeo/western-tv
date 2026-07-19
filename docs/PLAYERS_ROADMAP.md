@@ -124,6 +124,6 @@ graph LR
 ## Governança
 
 - Cada fase deve gerar (ou atualizar) ADRs em [`adr/`](./adr/).
-- Divergências do baseline em [`PLAYER_REFERENCE_ARCHITECTURE.md`](./PLAYER_REFERENCE_ARCHITECTURE.md) exigem ADR.
+- Divergências do baseline em [`REFERENCE_ARCHITECTURE.md`](./REFERENCE_ARCHITECTURE.md) exigem ADR.
 - Cada release passa pelo [`TEST_PLAN.md`](./TEST_PLAN.md).
 - Novos players devem atender [`QUALITY_CRITERIA.md`](./QUALITY_CRITERIA.md).

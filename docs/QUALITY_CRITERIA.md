@@ -60,7 +60,7 @@ Antes do merge, cada player novo deve ter:
 - [ ] Uma seção em [`TV_PLAYER.md`](./TV_PLAYER.md) ou documento equivalente descrevendo o player.
 - [ ] Atualização de [`API_REFERENCE.md`](./API_REFERENCE.md) para novos endpoints.
 - [ ] Atualização de [`PLAYERS_ROADMAP.md`](./PLAYERS_ROADMAP.md).
-- [ ] Relatório de divergência (se divergir do baseline) — template em [`PLAYER_REFERENCE_ARCHITECTURE.md § 3`](./PLAYER_REFERENCE_ARCHITECTURE.md#3-template-de-relatório-de-divergência).
+- [ ] Relatório de divergência (se divergir do baseline) — template em [`REFERENCE_ARCHITECTURE.md § 3`](./REFERENCE_ARCHITECTURE.md#3-template-de-relatório-de-divergência).
 
 ## 7. ADRs obrigatórios
 

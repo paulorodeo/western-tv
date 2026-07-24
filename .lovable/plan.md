@@ -1,78 +1,85 @@
-# Ajustes finais da Suite de Documentação
+# Revisão final — TV Player Reverse Engineering Documentation
 
-A suite já foi criada no turno anterior. Este plano cobre apenas o **delta** solicitado.
+## Situação verificada
+- O arquivo `docs/TV_PLAYER_REVERSE_ENGINEERING.md` **não existe** no repositório (a criação anterior foi interrompida). Portanto, esta "revisão final" será executada como **criação já incorporando todos os critérios de qualidade** do pedido — nenhum outro documento será criado ou alterado, e nenhum código de aplicação será tocado.
+- Referências reais validadas: `src/components/LivePlayer.tsx`, `src/routes/api/public/hls.$.ts`, `src/routes/index.tsx`, `src/routes/__root.tsx`, `package.json` (`hls.js@^1.6.16`, React 19, Vite 8), `vite.config.ts` (TanStack Start + Nitro/Cloudflare via `@lovable.dev/vite-tanstack-config`).
 
-## O que já existe (nenhuma ação)
+## Arquivo
+- Criar `docs/TV_PLAYER_REVERSE_ENGINEERING.md` (único arquivo alterado).
 
-Todos os itens 2-10 já foram entregues:
+## Princípios editoriais
+- PT-BR, Markdown, sem emojis salvo os marcadores de status pedidos (✅ ⚠️ 🔮 ❌).
+- Toda afirmação técnica é validada contra os arquivos reais acima; nada assumido.
+- Separação estrita entre **arquitetura atual** e **evolução futura** — funcionalidades não implementadas aparecem apenas como roadmap.
+- Trechos de código curtos, ilustrativos (assinaturas, exemplo de request/response, snippet de config), nunca cópia do projeto.
+- Cross-links para docs existentes (`./TV_PLAYER.md`, `./PLAYER_ARCHITECTURE.md`, `./API_REFERENCE.md`, `./adr/`), sem duplicar conteúdo.
 
-| Item pedido | Arquivo existente | Status |
-|---|---|---|
-| API Reference | `docs/API_REFERENCE.md` | ✅ Completo |
-| Performance | `docs/PERFORMANCE.md` | ✅ Completo |
-| Security | `docs/SECURITY.md` | ✅ Completo |
-| Test Plan | `docs/TEST_PLAN.md` | ✅ Completo |
-| Migração sem duplicar código | `docs/PLAYER_MIGRATION_GUIDE.md` | ✅ Já usa referências, não duplica arquivos inteiros |
-| Diagrama global da plataforma | `docs/PLATFORM_ARCHITECTURE.md` + `/mnt/documents/Platform_Architecture.mmd` | ✅ Completo |
-| Roadmap arquitetural (fases) | `docs/PLAYERS_ROADMAP.md` (Parte B com gantt) | ✅ Completo |
-| Arquitetura Oficial de Referência | `docs/PLAYER_REFERENCE_ARCHITECTURE.md` | ✅ Completo (renomear — ver abaixo) |
-| Critérios de Qualidade | `docs/QUALITY_CRITERIA.md` | ✅ Completo |
-| ADRs | `docs/adr/0001-…` a `0009-…` | ✅ 9 ADRs |
+## Estrutura do documento
 
-## Delta a executar
+1. **Visão geral da arquitetura**
+   - Stack real: TanStack Start v1 + React 19 + Vite 8 + Tailwind v4 + `hls.js@^1.6.16`, executado em Cloudflare Workers (workerd via Nitro).
+   - Diagrama ASCII (Browser → Player Component → HLS Engine → Proxy/API Layer → Streaming Server) + variante Mermaid.
+   - Papéis e fronteiras de cada camada.
 
-### 1. Renomear (item 1)
-- `docs/PLAYER_REFERENCE_ARCHITECTURE.md` → `docs/REFERENCE_ARCHITECTURE.md`
-- Comando: `mv docs/PLAYER_REFERENCE_ARCHITECTURE.md docs/REFERENCE_ARCHITECTURE.md`
+2. **Fluxo completo de reprodução** — mount → primeiro frame
+   - SSR do shell, hidratação, IntersectionObserver (`rootMargin: 200px`), import dinâmico de `hls.js`, `attachMedia`, GET `/api/public/hls/live.m3u8`, parse do manifest, GET dos segmentos `.ts` com `Range`, `appendBuffer`, evento `playing`.
+   - Diagrama de sequência.
 
-### 2. Atualizar referências ao arquivo renomeado
-Ajustar links em:
-- `docs/README.md` (2 ocorrências)
-- `docs/TV_PLAYER.md`
-- `docs/PLAYER_ARCHITECTURE.md` (se houver)
-- `docs/PLAYER_MIGRATION_GUIDE.md`
-- `docs/PLAYERS_ROADMAP.md`
-- `docs/QUALITY_CRITERIA.md`
-- `docs/adr/README.md`
-- Qualquer ADR que referencie
+3. **Compatibilidade entre navegadores** (expandida)
+   - Tabela `Navegador × Engine × Método × Observações` (Chrome/Edge/Firefox/Android → HLS.js + MSE; Safari macOS/iOS → HLS nativo; Android → HLS.js preferido, nativo como fallback).
+   - Por que Safari não usa HLS.js (MSE limitado + suporte nativo `application/vnd.apple.mpegurl`), como funciona o fallback (`Hls.isSupported()` → `canPlayType()` → `error`), impacto de autoplay, `muted`, `playsInline`, fullscreen mobile (iOS não suporta Fullscreen API padrão no `<div>` — só no elemento `<video>`).
 
-Vou usar `rg` para localizar e `line_replace` para atualizar.
+4. **Arquivos responsáveis pelo player**
+   - `src/components/LivePlayer.tsx`, `src/routes/api/public/hls.$.ts`, `src/routes/index.tsx` (montagem), `src/routes/__root.tsx` (head/SEO), `src/styles.css` (animações), `package.json`, `vite.config.ts` (TanStack Start + Nitro Cloudflare).
+   - Para cada: responsabilidade, dependências, entradas, saídas, comunicação com os demais.
 
-### 3. Criar `docs/COMPATIBILITY_MATRIX.md` (item 11) — NOVO
-Matriz de compatibilidade entre navegadores/SOs e funcionalidades. Conteúdo:
+5. **HLS e streaming**
+   - Biblioteca `hls.js@^1.6.16`, import dinâmico, config real `{ lowLatencyMode: true, backBufferLength: 30 }`.
+   - Manifesto `.m3u8`, segmentos `.ts/.m4s/.mp4/.key`, MIME types atribuídos pelo proxy, `Range`, gestão de buffer, tratamento de `Hls.Events.ERROR` fatal, retry via remontagem do pipeline.
+   - Marcar como 🔮 futuro: ABR customizado, DVR, múltiplas fontes.
 
-- **Tabela principal** — Feature × (Chrome / Edge / Firefox / Safari / Chrome Android / Safari iOS)
-- Cobrindo:
-  - HLS via `hls.js`
-  - HLS nativo
-  - Autoplay muted
-  - `playsInline`
-  - Fullscreen
-  - Picture-in-Picture (video)
-  - Document Picture-in-Picture
-  - Media Session API
-  - Range requests
-  - Web Audio API
-  - Service Worker / PWA
-  - Chromecast
-  - AirPlay
-  - Web Share API
-  - localStorage
-- **Legenda:** ✅ suportado / ⚠️ parcial / ❌ não / Nativo (usa HLS nativo em vez de hls.js)
-- **Estratégia por feature** — o que o player faz em cada nível de suporte (progressive enhancement)
-- **Referência de versões mínimas** — Chrome 116, Safari 18, Firefox 122 etc.
-- Referências cruzadas para `TEST_PLAN.md` e `QUALITY_CRITERIA.md`
+6. **Proxy, CORS e servidor**
+   - Rota TanStack `createFileRoute('/api/public/hls/$')` com handlers OPTIONS/GET/HEAD.
+   - Origem hard-coded (`ORIGIN` fixo — mitigação de SSRF), MIME por extensão, propagação de `Content-Length`/`Content-Range`/`Accept-Ranges`/`Cache-Control`/`ETag`/`Last-Modified`, headers CORS, defaults de `Cache-Control` (`no-cache` para `.m3u8`, `public, max-age=60` para segmentos), streaming de `upstream.body`.
+   - Exemplo real de request/response.
 
-### 4. Atualizar `docs/README.md`
-- Adicionar entrada para `COMPATIBILITY_MATRIX.md` na tabela de qualidade
-- Corrigir link renomeado
+7. **Performance**
+   - Lazy activation (IO), `hls.js` fora do bundle inicial (import dinâmico), streaming sem bufferização intermediária no Worker, `aspect-video` reservando espaço (sem CLS), overlay idle no lugar de poster pesado, `autoplay muted playsInline`, cache de segmentos no proxy.
+   - Marcar como 🔮 futuro: preload de manifest, prefetch de segmentos, poster estático otimizado.
 
-## Entregáveis
-- 1 rename
-- 1 arquivo novo (`COMPATIBILITY_MATRIX.md`)
-- Ajustes de links nos documentos existentes
+8. **Estados e tratamento de erros**
+   - FSM `idle → loading → playing | paused | error`, eventos capturados (`playing`, `waiting`, `pause`, `error`, `Hls.Events.ERROR` fatal), overlays por estado, retry manual.
+   - Marcar como 🔮 futuro: reconexão automática com backoff, telemetria de erros.
 
-## Fora do escopo
-- Nenhum arquivo `.tsx`/`.ts` de runtime
-- Nenhuma instalação
-- Nenhuma reescrita dos documentos já entregues (só ajustes de links)
+9. **Segurança**
+   - `/api/public/*` bypassa auth por design (stream público). CORS `*` (recurso público). Origem fixa impede open-proxy/SSRF. Sem credenciais, cookies ou tokens.
+   - Marcar como 🔮 futuro: allow-list de Referer/Origin, token assinado (HMAC/JWT), rate-limit, DRM (Widevine/FairPlay/PlayReady), autenticação de stream.
+
+10. **Como portar para outro projeto** — checklist operacional
+    - Dependências, componente, proxy, CORS, MIME, lazy, estados, testes Safari/Chrome/Firefox/Android/iOS.
+    - Adaptações mínimas (trocar `ORIGIN` e `STREAM_URL`).
+    - Notas para stacks alternativas (Next route handler, Express/Fastify) descritas em texto — sem colar código completo.
+
+11. **Guia para outra IA reconstruir** — 10 etapas operacionais
+    - Componente visual → `<video>` → HLS.js → proxy → CORS → MIME → lazy → estados → testes de browsers → validação de performance. Cada etapa com critério de aceite objetivo.
+
+12. **Decisões arquiteturais e justificativas** (nova seção)
+    - Uma entrada estruturada (**Decisão / Motivo / Alternativas / Consequência**) para cada:
+      HLS.js com fallback nativo; proxy same-origin; streaming direto (sem buffer no Worker); import dinâmico de `hls.js`; IntersectionObserver para lazy activation; execução em Cloudflare Worker; SSR seguro (sem tocar `window` no server, dynamic import client-side).
+    - Referências cruzadas aos ADRs existentes em `docs/adr/`.
+
+13. **Limitações conhecidas da implementação atual** (nova seção)
+    - Somente limitações confirmadas por leitura do código: sem DRM, sem autenticação/tokenização do stream, sem controle de acesso por usuário, sem DVR/timeshift, sem gravação, fonte única hard-coded, sem ABR customizado, sem legendas, sem analytics, sem Media Session API, sem PiP/Document PiP, sem Chromecast/AirPlay, sem reconexão automática com backoff (só retry manual), sem fullscreen no elemento `<video>` para iOS.
+
+14. **Matriz de requisitos** (tabela final)
+    - Requisito | Status (✅ / ⚠️ / ❌ futuro) | Observação
+    - Inclui: HLS Streaming, HLS.js, Safari fallback nativo, Lazy loading, Proxy CORS, Range requests, SSR compatibility, Streaming Worker, Retry manual, Fullscreen, Autoplay muted, DRM, PiP, Chromecast/AirPlay, DVR, Legendas, Analytics, Reconexão automática, Media Session API, Token assinado.
+
+15. **TV Player Reference Specification** (independente do código)
+    - Requisitos funcionais, técnicos, de performance (LCP intacto, sem CLS, bundle inicial sem hls.js, TTFF alvo) e de compatibilidade — redigidos de forma que uma IA construa um equivalente sem ver o código.
+
+16. **Critério de aprovação**
+    - Checklist final validando os 4 critérios do pedido (outro dev recria, outra IA entende, decisões documentadas, melhorias futuras não quebram a arquitetura atual).
+
+## Fora de escopo
+- Nenhuma alteração em código de aplicação, outros documentos, ADRs, `package.json`, `vite.config.ts` ou assets.

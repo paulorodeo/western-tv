@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const ORIGIN = "https://tv.fazenda.rodeo/hls/";
+const ORIGIN = "https://tv-stream.fazenda.rodeo/hls/";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",

@@ -182,7 +182,7 @@ function Home() {
           <div className="grid gap-6 md:grid-cols-3">
             {[
               { title: "Portal", tag: "Notícias & Cultura", desc: "O jornalismo, os artistas e as histórias que movem o universo agro e western.", href: "https://country.fazenda.rodeo", img: ecoPortal },
-              { title: "Rádio Country", tag: "Áudio 24h", desc: "A trilha sonora do rancho. Clássicos e novidades da música country em fluxo contínuo.", href: "https://country.fazenda.rodeo/player", img: ecoRadio },
+              { title: "Rádio Country", tag: "Áudio 24h", desc: "A trilha sonora do rancho. Clássicos e novidades da música country em fluxo contínuo.", href: "https://radio.fazenda.rodeo", img: ecoRadio },
               { title: "TV", tag: "Streaming ao vivo", desc: "Rodeios, documentários e programação exclusiva em alta definição, direto no ar.", href: "https://tv.fazenda.rodeo", img: ecoTv },
             ].map((c) => (
               <a

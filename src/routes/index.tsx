@@ -5,9 +5,9 @@ import heroImg from "@/assets/hero-cowboy.jpg";
 import ecoPortal from "@/assets/eco-portal.jpg";
 import ecoRadio from "@/assets/eco-radio.jpg";
 import ecoTv from "@/assets/eco-tv.jpg";
-import poweredLogo from "@/assets/powered-pr.webp.asset.json";
 
 const LOGO = "https://agronejo.fazenda.rodeo/wp-content/uploads/2025/01/New-Logo-Fazenda-Rodeo-180-x-56-px1.png";
+const POWERED_LOGO = "https://country.fazenda.rodeo/wp-content/uploads/2026/05/pr-logotipo.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
           url: "https://tv.fazenda.rodeo",
           logo: LOGO,
           description: "Emissora premium dedicada ao universo country, western e agro.",
-          sameAs: ["https://country.fazenda.rodeo", "https://country.fazenda.rodeo/player"],
+          sameAs: ["https://country.fazenda.rodeo", "https://radio.fazenda.rodeo"],
         }),
       },
     ],
@@ -227,7 +227,7 @@ function Home() {
 
             <nav className="flex flex-col items-center gap-3 text-[11px] tracking-[0.28em] uppercase text-muted-foreground md:items-end">
               <a href="https://country.fazenda.rodeo" className="hover:text-gold">Portal</a>
-              <a href="https://country.fazenda.rodeo/player" className="hover:text-gold">Rádio</a>
+              <a href="https://radio.fazenda.rodeo" className="hover:text-gold">Rádio</a>
               <a href="https://tv.fazenda.rodeo" className="hover:text-gold">TV</a>
             </nav>
           </div>
@@ -252,7 +252,7 @@ function Home() {
               className="group flex items-center gap-3 text-[10px] tracking-[0.32em] uppercase text-muted-foreground/70 transition-colors hover:text-gold"
             >
               <span>Powered by</span>
-              <img src={poweredLogo.url} alt="Paulo Rodeo" className="h-6 w-auto opacity-70 transition-opacity group-hover:opacity-100" />
+              <img src={POWERED_LOGO} alt="Paulo Rodeo" className="h-6 w-auto opacity-70 transition-opacity group-hover:opacity-100" />
             </a>
           </div>
         </div>

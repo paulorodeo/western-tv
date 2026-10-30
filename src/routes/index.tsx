@@ -4,7 +4,7 @@ import { RadioPlayer } from "@/components/RadioPlayer";
 import heroImg from "@/assets/hero-cowboy.jpg";
 import ecoPortal from "@/assets/eco-portal.jpg";
 import ecoRadio from "@/assets/eco-radio.jpg";
-import ecoTv from "@/assets/eco-tv.jpg";
+import ecoPodcast from "@/assets/eco-podcast.webp";
 
 const LOGO = "https://agronejo.fazenda.rodeo/wp-content/uploads/2025/01/New-Logo-Fazenda-Rodeo-180-x-56-px1.png";
 const POWERED_LOGO = "https://country.fazenda.rodeo/wp-content/uploads/2026/05/pr-logotipo.webp";
@@ -181,9 +181,9 @@ function Home() {
 
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              { title: "Portal", tag: "Notícias & Cultura", desc: "O jornalismo, os artistas e as histórias que movem o universo agro e western.", href: "https://country.fazenda.rodeo", img: ecoPortal },
+              { title: "Portal", tag: "Notícias & Cultura", desc: "O jornalismo, os artistas e as histórias que movem o universo agro e western.", href: "https://portal.fazenda.rodeo/", img: ecoPortal },
               { title: "Rádio Country", tag: "Áudio 24h", desc: "A trilha sonora do rancho. Clássicos e novidades da música country em fluxo contínuo.", href: "https://radio.fazenda.rodeo", img: ecoRadio },
-              { title: "TV", tag: "Streaming ao vivo", desc: "Rodeios, documentários e programação exclusiva em alta definição, direto no ar.", href: "https://tv.fazenda.rodeo", img: ecoTv },
+              { title: "Podcast", tag: "Histórias & Música", desc: "Episódios, bastidores e histórias do universo country. Ouça quando e onde quiser.", href: "https://podcast.fazenda.rodeo/", img: ecoPodcast },
             ].map((c) => (
               <a
                 key={c.title}
@@ -226,9 +226,9 @@ function Home() {
             </div>
 
             <nav className="flex flex-col items-center gap-3 text-[11px] tracking-[0.28em] uppercase text-muted-foreground md:items-end">
-              <a href="https://country.fazenda.rodeo" className="hover:text-gold">Portal</a>
+              <a href="https://portal.fazenda.rodeo/" className="hover:text-gold">Portal</a>
               <a href="https://radio.fazenda.rodeo" className="hover:text-gold">Rádio</a>
-              <a href="https://tv.fazenda.rodeo" className="hover:text-gold">TV</a>
+              <a href="https://podcast.fazenda.rodeo/" className="hover:text-gold">Podcast</a>
             </nav>
           </div>
 

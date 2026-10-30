@@ -240,7 +240,6 @@ function Home() {
               <a href="https://www.instagram.com/rodeocountrymedia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-gold">Instagram</a>
               <a href="https://www.youtube.com/@fazendarodeo" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-gold">YouTube</a>
               <a href="https://www.facebook.com/paulorodeoagro" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-gold">Facebook</a>
-              <a href="https://wa.me/5511988559044" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-gold">WhatsApp</a>
             </div>
           </div>
 

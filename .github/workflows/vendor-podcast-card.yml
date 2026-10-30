@@ -1,0 +1,43 @@
+name: Incorporar imagem do Podcast
+on:
+  push:
+    branches: [doc_player]
+    paths:
+      - ".github/workflows/vendor-podcast-card.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download official Rodeo Country Podcasts studio artwork
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error --retry 5 --retry-all-errors --retry-delay 2 --max-time 45 \
+            "https://podcast.fazenda.rodeo/__l5e/assets-v1/85b6eede-8c09-4f05-bfcf-5e5112620f19/studio-780.webp" \
+            --output src/assets/eco-podcast.webp
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("src/assets/eco-podcast.webp")
+          data=p.read_bytes()
+          assert len(data)==32376, f"Unexpected size: {len(data)}"
+          assert data[:4]==b"RIFF" and data[8:12]==b"WEBP", "Not a WebP image"
+          print(f"Verified {p}: {len(data)} bytes")
+          PY
+      - name: Commit asset to doc_player branch
+        run: |
+          git add src/assets/eco-podcast.webp
+          if git diff --cached --quiet; then
+            echo "Image already versioned."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "assets: add official Rodeo Country Podcasts studio image"
+          git push origin HEAD:doc_player

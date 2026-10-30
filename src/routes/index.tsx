@@ -246,7 +246,7 @@ function Home() {
 
           <div className="mt-10 flex flex-col items-center gap-3">
             <a
-              href="https://paulo.rodeo"
+              href="https://paulo.fazenda.rodeo"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-3 text-[10px] tracking-[0.32em] uppercase text-muted-foreground/70 transition-colors hover:text-gold"

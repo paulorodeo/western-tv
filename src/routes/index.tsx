@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
     meta: [
       { property: "og:image", content: "https://agronejo.fazenda.rodeo/wp-content/uploads/2025/01/New-Logo-Fazenda-Rodeo-180-x-56-px1.png" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://tv.fazenda.rodeo/" }],
     scripts: [
       {
         type: "application/ld+json",
